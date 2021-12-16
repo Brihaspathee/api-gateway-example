@@ -17,7 +17,7 @@ spring:
   profiles:
     active: local,clean
   application:
-    name: department-service
+    name: DEPARTMENT-SERVICE
 eureka:
   client:
     register-with-eureka: true
@@ -33,3 +33,5 @@ logging:
         type:
           descriptor:
             sql: trace
+  file:
+    name: logs/local/department-service.log

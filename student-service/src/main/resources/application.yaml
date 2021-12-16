@@ -15,7 +15,7 @@ spring:
   profiles:
     active: local, clean
   application:
-    name: student-service
+    name: STUDENT-SERVICE
 eureka:
   client:
     register-with-eureka: true
@@ -31,3 +31,5 @@ logging:
         type:
           descriptor:
             sql: trace
+  file:
+    name: logs/local/student-service.log

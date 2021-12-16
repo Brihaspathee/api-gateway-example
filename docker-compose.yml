@@ -1,0 +1,63 @@
+version: '3.8'
+services:
+  SERVICE-DISCOVERY:
+    image: vbalaji215/service-discovery:0.0.1-SNAPSHOT
+    container_name: SERVICE-DISCOVERY
+    networks:
+      - university-net
+    volumes:
+      - /Users/logs/api-gateway-example/service-discovery:/logs/local
+    ports:
+      - "8761:8761"
+    #environment:
+     # SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+  API-GATEWAY:
+    image: vbalaji215/api-gateway:0.0.1-SNAPSHOT
+    container_name: API-GATEWAY
+    networks:
+      - university-net
+    volumes:
+      - /Users/logs/api-gateway-example/api-gateway:/logs/local
+    ports:
+      - "9191:9191"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://SERVICE-DISCOVERY:8761/eureka
+      EUREKA_INSTANCE_HOSTNAME: SERVICE-DISCOVERY
+    depends_on:
+      - service-discovery
+  DEPARTMENT-SERVICE:
+    image: vbalaji215/department-service:0.0.1-SNAPSHOT
+    container_name: DEPARTMENT-SERVICE
+    networks:
+      - university-net
+    volumes:
+      - /Users/logs/api-gateway-example/department-service:/logs/local
+    ports:
+      - "8081:8081"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://SERVICE-DISCOVERY:8761/eureka
+      EUREKA_INSTANCE_HOSTNAME: SERVICE-DISCOVERY
+    depends_on:
+      - SERVICE-DISCOVERY
+      - API-GATEWAY
+  STUDENT-SERVICE:
+    image: vbalaji215/student-service:0.0.1-SNAPSHOT
+    container_name: STUDENT-SERVICE
+    networks:
+      - university-net
+    volumes:
+     - /Users/logs/api-gateway-example/student-service:/logs/local
+    ports:
+      - "8082:8082"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://SERVICE-DISCOVERY:8761/eureka
+      EUREKA_INSTANCE_HOSTNAME: SERVICE-DISCOVERY
+    depends_on:
+      - SERVICE-DISCOVERY
+      - API-GATEWAY
+      - DEPARTMENT-SERVICE
+
+networks:
+  university-net:
+    name: university-net
+    driver: bridge
