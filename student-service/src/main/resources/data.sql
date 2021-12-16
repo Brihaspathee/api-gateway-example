@@ -1,0 +1,6 @@
+insert into student(student_id, first_name, last_name, department_id) values ('f609b42f-bc97-4f6d-9dd6-770fb7856450', 'Balaji', 'Varadharajan', '631862e5-e518-4ac3-9827-add22c3ac05f');
+insert into student(student_id, first_name, last_name, department_id) values ('27b2c728-c03c-423c-8c49-2b1c27a01f7d', 'Pooja', 'Mohanakrishnan', '5492dd35-4c63-4e2b-8999-4bc29e967059');
+insert into student(student_id, first_name, last_name, department_id) values ('97ad99d7-76b1-42a4-b750-d98d29009b58', 'Joy', 'Balaji', '631862e5-e518-4ac3-9827-add22c3ac05f');
+insert into student(student_id, first_name, last_name, department_id) values ('633754ed-929d-4047-9f3a-ce9bbb3a72d5', 'Jiana', 'Balaji', '631862e5-e518-4ac3-9827-add22c3ac05f');
+insert into student(student_id, first_name, last_name, department_id) values ('29cf2e4e-ffd2-4840-8012-490fb74185ad', 'John', 'Doe', 'eec274f1-49f9-4909-ad32-32c1d6799d2b');
+insert into student(student_id, first_name, last_name, department_id) values ('ff5c2eac-5954-4c3b-ab18-6fcb4e1f3070', 'Mary', 'Doe', '4c01dd44-e32e-41fc-abc4-fa10e931acff');
